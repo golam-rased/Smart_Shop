@@ -10,7 +10,7 @@ class DatabaseSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        //factory(App\User::class, 5)->create();
+        //factory(App\User::class, 30)->create();
         //factory(App\Category::class, 4)->create();
         // $this->call(UsersTableSeeder::class);
     }

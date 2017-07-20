@@ -32,17 +32,17 @@ Product Details
                     </script>
                     <!-- //FlexSlider-->
                     <ul class="slides">
-                        <li data-thumb="{{asset('public/frontEnd/images/d2.jpg')}}">
-                            <div class="thumb-image"> <img src="{{asset('public/frontEnd/images/d2.jpg')}}" data-imagezoom="true" class="img-responsive"> </div>
+                        <li data-thumb="{{asset($productById->productImage)}}">
+                            <div class="thumb-image"> <img src="{{asset($productById->productImage)}}" data-imagezoom="true" class="img-responsive"> </div>
                         </li>
-                        <li data-thumb="{{asset('public/frontEnd/images/d1.jpg')}}">
-                            <div class="thumb-image"> <img src="{{asset('public/frontEnd/images/d1.jpg')}}" data-imagezoom="true" class="img-responsive"> </div>
+                        <li data-thumb="{{asset($productById->productImage)}}">
+                            <div class="thumb-image"> <img src="{{asset($productById->productImage)}}" data-imagezoom="true" class="img-responsive"> </div>
                         </li>	
-                        <li data-thumb="{{asset('public/frontEnd/images/d3.jpg')}}">
-                            <div class="thumb-image"> <img src="{{asset('public/frontEnd/images/d3.jpg')}}" data-imagezoom="true" class="img-responsive"> </div>
+                        <li data-thumb="{{asset($productById->productImage)}}">
+                            <div class="thumb-image"> <img src="{{asset($productById->productImage)}}" data-imagezoom="true" class="img-responsive"> </div>
                         </li>
-                        <li data-thumb="{{asset('public/frontEnd/images/d4.jpg')}}">
-                            <div class="thumb-image"> <img src="{{asset('public/frontEnd/images/d4.jpg')}}" data-imagezoom="true" class="img-responsive"> </div>
+                        <li data-thumb="{{asset($productById->productImage)}}">
+                            <div class="thumb-image"> <img src="{{asset($productById->productImage)}}" data-imagezoom="true" class="img-responsive"> </div>
                         </li>	
                     </ul>
                     <div class="clearfix"></div>
@@ -50,8 +50,8 @@ Product Details
             </div>
         </div>
         <div class="col-md-6 single-right-left simpleCart_shelfItem animated wow slideInRight animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInRight;">
-            <h3>Asics Gel Zaraca 4 Blue Sport Shoes</h3>
-            <p><span class="item_price">$550</span> <del>- $900</del></p>
+            <h3>{{$productById->productName}}</h3>
+            <p><span class="item_price">{{$productById->productPrice}}</span> <del>- $900</del></p>
             <div class="rating1">
                 <span class="starRating">
                     <input id="rating5" type="radio" name="rating" value="5">
@@ -73,15 +73,19 @@ Product Details
                         }" required="">
                 <input type="submit" value="Check">
             </div>
+            {!! Form::open(['url'=>'/cart/add', 'method'=> 'POST', 'class'=> 'form-horizontal']) !!}
             <div class="color-quality">
                 <div class="color-quality-right">
-                    <h5>Quality :</h5>
-                    <select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
+                    <h5>Quantity :</h5>
+<!--                    <select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
                         <option value="null">5 Qty</option>
                         <option value="null">6 Qty</option> 
                         <option value="null">7 Qty</option>					
                         <option value="null">10 Qty</option>								
-                    </select>
+                    </select>-->
+                    <input type="number" name="quantity" value="1"/>
+                    <input type="hidden" name="productId" value="{{$productById->id}}"/>
+                    
                 </div>
             </div>
             <div class="occasional">
@@ -97,10 +101,13 @@ Product Details
                 </div>
                 <div class="clearfix"> </div>
             </div>
-            <div class="occasion-cart">
-                <a href="#" class="item_add hvr-outline-out button2">Add to cart</a>
-            </div>
-
+            <button type="submit">
+                <div class="button-group">
+                    <!-- <a href="#" class="item_add hvr-outline-out button2"></a> !-->
+                    Add To Cart
+                </div>
+            </button>
+            {!! Form::close() !!}
         </div>
         <div class="clearfix"> </div>
 
@@ -120,8 +127,7 @@ Product Details
                 <div id="myTabContent" class="tab-content">
                     <div role="tabpanel" class="tab-pane fade in active bootstrap-tab-text" id="home" aria-labelledby="home-tab">
                         <h5>Product Brief Description</h5>
-                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
-                            <span>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></p>
+                        <p>{!!$productById->productLongDescription!!}</p>
                     </div>
                     <div role="tabpanel" class="tab-pane fade bootstrap-tab-text" id="profile" aria-labelledby="profile-tab">
                         <div class="bootstrap-tab-text-grids">

@@ -47,9 +47,9 @@ class WelcomeController extends Controller {
         return view('frontEnd.contact.contactContent');
     }
 
-    public function productDetails() {
-
-        return view('frontEnd.product.productContent');
+    public function productDetails($id) {
+        $productById = Product::where('id', $id)->first();
+        return view('frontEnd.product.productContent', ['productById' => $productById]);
     }
 
 }

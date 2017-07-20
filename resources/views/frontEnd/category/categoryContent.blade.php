@@ -305,18 +305,28 @@ Category
                         <img src="{{asset($publishedCategoryProduct->productImage)}}" alt="" class="pro-image-back"height="200" width="200">
                         <div class="men-cart-pro">
                             <div class="inner-men-cart-pro">
-                                <a href="{{url('/product-details')}}" class="link-product-add-cart">Quick View</a>
+                                <a href="{{url('/product-details/'.$publishedCategoryProduct->id)}}" class="link-product-add-cart">Quick View</a>
                             </div>
                         </div>
                         <span class="product-new-top">New</span>				
                     </div>
                     <div class="item-info-product ">
-                        <h4><a href="{{url('/product-details')}}">{{$publishedCategoryProduct->productName}}</a></h4>
+                        <h4><a href="{{url('/product-details/'.$publishedCategoryProduct->id)}}">{{$publishedCategoryProduct->productName}}</a></h4>
                         <div class="info-product-price">
                             <span class="item_price">Tk. {{$publishedCategoryProduct->productPrice}}</span>
                             <del>$69.71</del>
                         </div>
-                        <a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>									
+                        {!! Form::open(['url'=>'/cart/add', 'method'=> 'POST', 'class'=> 'form-horizontal']) !!}
+                        <input type="hidden" name="productId" value="{{$publishedCategoryProduct->id}}">
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit">
+                            <div class="button-group">
+                                <!-- <a href="#" class="item_add hvr-outline-out button2"></a> !-->
+                                Add To Cart
+                            </div>
+                        </button>
+                        {!! Form::close() !!}
+<!--                        <a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>									-->
                     </div>
                 </div>
             </div>

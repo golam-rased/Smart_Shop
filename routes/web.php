@@ -35,7 +35,7 @@
 Route::get('/', 'WelcomeController@index');
 Route::get('/category-view/{id}', 'WelcomeController@category');
 Route::get('/contact', 'WelcomeController@contact');
-Route::get('/product-details', 'WelcomeController@productDetails');
+Route::get('/product-details/{id}', 'WelcomeController@productDetails');
 
 Auth::routes();
 
@@ -69,3 +69,20 @@ Route::get('product/edit/{id}', 'ProductController@editProduct');
 Route::post('product/update', 'ProductController@updateProduct');
 Route::get('product/delete/{id}', 'ProductController@deleteProduct');
 /*product Info*/ 
+
+
+/*User Info */
+
+Route::get('/user/manage', 'UserController@manageUser');
+
+/*User Info */
+
+
+/* Cart Info*/
+
+Route::post('/cart/add', 'CartController@addToCart');
+Route::get('/cart/show', 'CartController@showCart');
+Route::post('/cart/update', 'CartController@updateCart');
+Route::get('/cart/delete/{rowId}', 'CartController@deleteCart');
+
+/* Cart Info*/
